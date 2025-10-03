@@ -1,0 +1,14 @@
+GOOGLE_API_KEY="Coloque aqui sua chave de api"
+
+SERVICES_API_KEY="Coloque aqui sua chave de api"
+
+# Postgres base
+POSTGRES_USER="seu usuário do banco de dados"
+POSTGRES_PASSWORD="a senha do banco de dados"
+POSTGRES_DB="nome do banco de dados"
+POSTGRES_HOST="localhost"
+POSTGRES_TAG=16
+POSTGRES_PORT=5432
+
+# URL para o app (psycopg3)
+DATABASE_URL=postgresql+psycopg://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:${POSTGRES_PORT}/${POSTGRES_DB}

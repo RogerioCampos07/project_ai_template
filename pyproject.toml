@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "project_ai_template"
+version = "0.1.0"
+description = "Template for AI projects"
+authors = ["Rogerio Campos <rogerio.campos07@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "project_ai_template", from = "src" }]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<4.0"
+langchain = "^0.3.27"
+langchain-community = "^0.3.30"
+python-dotenv = "^1.1.1"
+psycopg = {extras = ["binary"], version = "^3.2.10"}
+pydantic = "^2.11.9"
+pydantic-settings = "^2.11.0"
+
+
+[tool.ruff]
+#exclude = ['settings.py','manage.py']
+line-length = 79
+extend-exclude = ['migrations']
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT','B','UP','N','ANN']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.taskipy.tasks]
+lint = 'ruff check'
+pre_format = 'ruff check --fix'
+format = 'ruff format'
+pre_test = 'task lint'
+fix_all = 'ruff check --fix src/ && ruff format src/'
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.13.3,<0.14.0)",
+    "taskipy (>=1.14.1,<2.0.0)",
+    "pytest (>=8.4.2,<9.0.0)"
+]
